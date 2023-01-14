@@ -45,13 +45,13 @@ int GetSum(int number)
 
     for (int i = 0; i < numdig; i++, number /= 10) // при каждой итерации уменьшаем  number делением нацело: (number/10). (4321, 432, 43, 4)
     {
-        n += number % 10; // получаем последнюю цифру числа number и прибавляем n.
+        n += number % 10; // получаем последнюю цифру числа number и прибавляем n. (1+2+3+4)
     }
     return n;
 }
 
-int sumdigit = GetSum(number);
+double sumdigit = GetSum(number);
 
-Console.WriteLine(sumdigit);
+Console.WriteLine(Math.Abs(sumdigit));
 
 
