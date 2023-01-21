@@ -11,12 +11,58 @@
 
 /*
 АЛГОРИТМ
-1. Получаем строку из восьми элементов, введёных из консоли
-2. 
-3. 
+1. Метод получения строки из консоли с последующим её форматированием
+2. Метод печати и преобразования числового массива из входящей строки
 */
 
 
+using System.Text.RegularExpressions;
+
+string GetString(string message)
+{
+    Console.Write(message);
+
+    string s = Console.ReadLine() ?? " ";
+
+    s = new string(s.Where(c => !char.IsPunctuation(c)).ToArray());
+
+    string pattern = @"\s+";
+    string target = " ";
+    Regex regex = new Regex(pattern);
+
+    string result = regex.Replace(s, target);
+
+    return result;
+}
+
+void PrintArray(string str)
+{
+    
+    int[] array = str.Split(' ').Select(x => int.Parse(x)).ToArray();
+    
+    if (array.Length == 8)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            Console.Write($"{array[i]} ");
+        }
+        Console.WriteLine();
+    }
+    else
+    {
+        Console.WriteLine("Необходимо ввести восемь элементов.");
+    }
+    Console.WriteLine($"array.Length = {array.Length}");
+
+}
+
+string str = GetString("Введите через пробел восемь элементов: ");
+
+PrintArray(str);
+
+
+
+/*
 using System.Text.RegularExpressions;
 
 string[] GetStringArray(string message)
@@ -59,5 +105,5 @@ PrintArray(a);
 
 Console.WriteLine($"array.Length = {a.Length}");
 
-
+*/
 
